@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
@@ -7,10 +8,10 @@ from keras.models import Model
 from keras.models import load_model
 import scipy
 
-model = load_model("C:/Users/user/OneDrive/Desktop/project/model_training/my_model.h5")
+model = load_model("model_training/my_model.h5")
 
 
-def plot_heat_map(img):
+def plot_heat_map_for_image(img):
     img = resize(img, (224, 224, 3))
     pred = model.predict(np.expand_dims(img, axis=0))
     pred_class = np.argmax(pred)
@@ -45,12 +46,12 @@ def plot_heat_map(img):
     # Create subplot with 1 row and 2 columns
     fig, axs = plt.subplots(1, 2, figsize=(10, 5))
 
-    # Plot original image
-    axs[0].imshow(img.astype('float32').reshape(img.shape[0], img.shape[1], 3))
+    # Plot original image (convert from BGR to RGB)
+    axs[0].imshow(cv2.cvtColor(img.astype('float32'), cv2.COLOR_BGR2RGB))
     axs[0].set_title('Original Image')
 
     # Plot heat map
-    axs[1].imshow(img.astype('float32').reshape(img.shape[0], img.shape[1], 3))
+    axs[1].imshow(cv2.cvtColor(img.astype('float32'), cv2.COLOR_BGR2RGB))
     axs[1].imshow(heat_map, cmap='jet', alpha=0.30)
     for i in range(0, peak_coords.shape[0]):
         y = peak_coords[i, 0]

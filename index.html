@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="tabs">
+    <button class="tab-button" onclick="openTab(event, 'Home')">Home</button>
+    <button class="tab-button" onclick="openTab(event, 'About')">About</button>
+</div>
+
+<div id="Home" class="home">
+    <div class="grid-container">
+        <div class="button-grid">
+            <input type="file" id="image">
+            <h4 id="selected-file-name"></h4>
+            <button class="buttons" id="process-image-button">Process Image</button>
+            <button class="buttons" id="reset-image-button">Reset Image</button>
+        </div>
+        <div class="image-grid">
+            <div class="image-container">
+                <img id="selected-image" src="" alt="Selected will show here">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="About" class="about">
+    <h2>About the Project</h2>
+    <p>Our project focuses on anomaly detection in the wood industry. Anomalies, such as defects or irregularities,
+        in wood planks can have significant consequences, leading to reduced quality and increased costs.</p>
+    <p>The goal of our project is to develop a machine learning-based solution that can automatically detect
+        anomalies in wood planks, aiding in quality control processes.</p>
+    <h3>About the Model</h3>
+    <p>We have developed a deep learning model based on the VGG16 architecture, pre-trained on the ImageNet dataset.
+        The model has been fine-tuned using a custom dataset consisting of more than 5500 images of both good quality
+        wood planks and anomalous planks.</p>
+    <p>Our model has been trained to classify images into two categories: "good" and "anomaly", facilitating the
+        identification of defective wood planks with high accuracy.</p>
+    <p>For more details and access to the dataset used in training, you can visit our GitHub repository:
+        <a href="https://github.com/amaankhan420/anomaly-detection" target="_blank">Anomaly Detection GitHub Repository</a>.</p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
